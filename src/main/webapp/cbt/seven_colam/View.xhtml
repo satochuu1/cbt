@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/cbt/template/template1.xhtml">
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_id}"/>
+                    <h:outputText value="#{sevenColamBb.selected.id}" title="#{bundle.ViewSevenColamTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_title}"/>
+                    <h:outputText value="#{sevenColamBb.selected.title}" title="#{bundle.ViewSevenColamTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_jokyo}"/>
+                    <h:outputText value="#{sevenColamBb.selected.jokyo}" title="#{bundle.ViewSevenColamTitle_jokyo}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_jidoShiko}"/>
+                    <h:outputText value="#{sevenColamBb.selected.jidoShiko}" title="#{bundle.ViewSevenColamTitle_jidoShiko}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_beforeKibunId}"/>
+                    <h:outputText value="#{sevenColamBb.selected.beforeKibunId}" title="#{bundle.ViewSevenColamTitle_beforeKibunId}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_tekioShiko}"/>
+                    <h:outputText value="#{sevenColamBb.selected.tekioShiko}" title="#{bundle.ViewSevenColamTitle_tekioShiko}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_hansho}"/>
+                    <h:outputText value="#{sevenColamBb.selected.hansho}" title="#{bundle.ViewSevenColamTitle_hansho}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_afterKibunId}"/>
+                    <h:outputText value="#{sevenColamBb.selected.afterKibunId}" title="#{bundle.ViewSevenColamTitle_afterKibunId}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_biko}"/>
+                    <h:outputText value="#{sevenColamBb.selected.biko}" title="#{bundle.ViewSevenColamTitle_biko}"/>
+                    <h:outputText value="#{bundle.ViewSevenColamLabel_updateYmd}"/>
+                    <h:outputText value="#{sevenColamBb.selected.updateYmd}" title="#{bundle.ViewSevenColamTitle_updateYmd}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{sevenColamBb.destroyAndView}" value="#{bundle.ViewSevenColamDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSevenColamEditLink}"/>
+                <br />
+                <h:commandLink action="#{sevenColamBb.prepareCreate}" value="#{bundle.ViewSevenColamCreateLink}" />
+                <br />
+                <h:commandLink action="#{sevenColamBb.prepareList}" value="#{bundle.ViewSevenColamShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/cbt/top" value="#{bundle.ViewSevenColamIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

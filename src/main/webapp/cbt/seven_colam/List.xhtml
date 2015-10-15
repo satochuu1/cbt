@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/cbt/template/template1.xhtml">
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSevenColamEmpty}" rendered="#{sevenColamBb.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sevenColamBb.items.rowCount > 0}">
+                    <h:outputText value="#{sevenColamBb.pagination.pageFirstItem + 1}..#{sevenColamBb.pagination.pageLastItem + 1}/#{sevenColamBb.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sevenColamBb.previous}" value="#{bundle.Previous} #{sevenColamBb.pagination.pageSize}" rendered="#{sevenColamBb.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sevenColamBb.next}" value="#{bundle.Next} #{sevenColamBb.pagination.pageSize}" rendered="#{sevenColamBb.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sevenColamBb.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_title}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.title}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_jokyo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jokyo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_jidoShiko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.jidoShiko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_beforeKibunId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.beforeKibunId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_tekioShiko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tekioShiko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_hansho}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.hansho}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_afterKibunId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.afterKibunId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_biko}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.biko}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSevenColamTitle_updateYmd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.updateYmd}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sevenColamBb.prepareView}" value="#{bundle.ListSevenColamViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sevenColamBb.prepareEdit}" value="#{bundle.ListSevenColamEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sevenColamBb.destroy}" value="#{bundle.ListSevenColamDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sevenColamBb.prepareCreate}" value="#{bundle.ListSevenColamCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/cbt/top" value="#{bundle.ListSevenColamIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

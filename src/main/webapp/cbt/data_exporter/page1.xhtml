@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <ui:composition template="/cbt/template/template1.xhtml">
+        <ui:define name="content">
+            <h:body>
+                <h:form>
+                    <p:inputText value="#{dataExporterBb.id}" />
+                    <p:commandButton value="search" action="#{dataExporterBb.seachId()}" update="tbl" />
+                    <h:outputText value="ああああ"/><h:outputText value="#{dataExporterBb.id}"/>
+                    <p:dataTable id="tbl" var="sc" value="#{dataExporterBb.sevenColamList}"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                 paginator="true" rows="10" style="margin-bottom:20px">
+
+                        <f:facet name="{Exporters}">
+                            <h:commandLink>
+                                <p:graphicImage name="/img/excel.jpg" width="24"/>
+                                <p:dataExporter type="xls" target="tbl" fileName="cars" encoding="SJIS"/>
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage name="/img/pdf.jpg" width="24"/>
+                                <p:dataExporter type="pdf" target="tbl" fileName="cars" encoding="SJIS"/>
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage name="/img/csv.jpg" width="24"/>
+                                <p:dataExporter type="csv" target="tbl" fileName="cars" encoding="SJIS"/>
+                            </h:commandLink>
+
+                            <h:commandLink>
+                                <p:graphicImage name="/img/xml.jpg" width="24"/>
+                                <p:dataExporter type="xml" target="tbl" fileName="cars" encoding="SJIS"/>
+                            </h:commandLink>
+                        </f:facet>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="id" />
+                            </f:facet>
+                            <h:outputText value="#{sc.id}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="title"/>
+                            </f:facet>
+                            <h:outputText value="#{sc.title}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="hansho" />
+                            </f:facet>
+                            <h:outputText value="#{sc.hansho}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="tekioShiko" />
+                            </f:facet>
+                            <h:outputText value="#{sc.tekioShiko}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</html>
+
